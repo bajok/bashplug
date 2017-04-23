@@ -1,11 +1,8 @@
 "blue, darkblue, default, delek, desert, elflord, evening, koehler, morning, murphy, pablo, peachpuff, ron, shine, slate, torte, zellner
-"colorscheme shine
-"colorscheme slate
-"colorscheme blue " bash looks poor
 colorscheme slate
+
 autocmd FileType python colorscheme zellner
 autocmd FileType bash   colorscheme slate
-
 
 syntax on
 filetype indent plugin on
@@ -27,6 +24,9 @@ set shiftwidth=2                       " when tab is pressed
 
 
 " set nocompatible
+
+" http://vim.wikia.com/wiki/Smart_mapping_for_tab_completion
+" author: benoit cerrina
 
 fun! InsertTabWrapper()
   let col = col('.') - 1
