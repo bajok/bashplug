@@ -1,0 +1,31 @@
+#.bashplug/control
+
+C_inf="\033[0;00;34m"
+C_suc="\033[0;00;32m"
+C_wrn="\033[0;00;35m"
+C_err="\033[1;37;41m"
+C_sth="\033[2;34;33m"
+C_hlw="\033[1;40;37m"
+C_lnk="\033[4;30;34m"
+C_lnd="\033[24;34m"
+C_inv="\033[7;30m"
+C_rst="\033[0;00;00m"
+newln="$C_rst\n"
+
+# test str
+C_test_sth="$C_sth: C_sth string $C_rst$newln"
+C_test_hlw="$C_hlw: C_hlw string $C_rst$newln"
+C_test_lnk="$C_lnk: C_lnk string $C_rst$newln"
+C_test_lnd="$C_lnd: C_lnd string $C_rst$newln"
+C_test_inv="$C_inv: C_inv string $C_rst$newln"
+C_test="$C_test_sth$C_test_hlw$C_test_lnk$C_test_lnd$C_test_inv"
+function prnt_test   { echo -ne "$C_test""$*""$C_rst$newln"; }
+
+# print functions
+function prnt()      { echo -ne "$*""$C_rst"; }
+function prnt_warn() { echo -ne "$C_wrn""$*""$C_rst$newln"; }
+function prnt_info() { echo -ne "$C_inf""$*""$C_rst$newln"; }
+function prnt_summ() { echo -ne "$C_hlw""$*""$C_rst$newln"; }
+function prnt_succ() { echo -ne "$C_suc""$*""$C_rst$newln"; }
+function eerr()      { echo -ne "$C_err""$*""$C_rst$newln"; }
+

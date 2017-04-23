@@ -1,0 +1,43 @@
+#.bashplug/aliases
+
+# change directory aliases
+alias back='cd $OLDPWD'
+alias cd..='cd ..'
+alias ..='cd ..'
+alias cdbp='cd ~/.bashplug'
+
+# listing aliases
+alias lsa='ls -a --color=always --group-directories-first'
+alias lsl='ls -la --color=always --group-directories-first --block-size=1'
+alias lss='ls -1Ssa --color=always --group-directories-first'
+alias ls='ls -hF --color=always'
+
+# command aliases
+alias grep='grep --color=auto'
+alias more='less'
+
+# less common command aliases
+alias today="date +%Y%m%d"
+alias todaytime="date +%Y%m%d%H%M%S"
+alias da='date "+%A, %B %d, %Y [%T]"'
+alias df='df -h'
+alias du='du -c -h'
+alias mkdir='mkdir -p -v'
+alias ping='ping -c 5'
+
+# script aliases
+alias fh="~/.bashplug/scripts/findhere.sh"
+
+# safety features
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
+
+# bashplug mgmt
+alias bp="source ~/.bashplug/source"
+alias bashrc="vim ~/.bashrc; source ~/.bashrc"
+alias vimrc="vim ~/.vimrc"
+alias xvi="cat $* | hexdump"
+
+# networking
+alias openports='netstat --all --numeric --programs --inet'
