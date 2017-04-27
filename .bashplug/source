@@ -18,6 +18,7 @@ if [ -d ~/.bashplug ]
 then
   source ~/.bashplug/control
   source ~/.bashplug/aliases
+  source ~/.bashplug/git
 
   prnt_summ "bashplug files sourced: version $BASHPLUG_VERSION"
 else

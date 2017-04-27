@@ -29,3 +29,23 @@ function prnt_summ() { echo -ne "$C_hlw""$*""$C_rst$newln"; }
 function prnt_succ() { echo -ne "$C_suc""$*""$C_rst$newln"; }
 function eerr()      { echo -ne "$C_err""$*""$C_rst$newln"; }
 
+# readkey with condition
+function cond_eval()
+{
+  local func="$1"
+  local message="${@:2}"
+  local input=""
+  local accept="[y/n]"
+  local accept_key="y"
+
+  prnt_warn "$message $accept"
+  
+  read input
+  if [ "$input" == "$accept_key" ]
+  then
+    prnt_info "executing: $func"
+    eval $func
+  else
+    prnt_info "nothing to do"
+  fi
+}

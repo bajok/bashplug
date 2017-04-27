@@ -1,0 +1,95 @@
+#.bashplug/git
+
+PROJECT_NAME=""
+
+#        configure
+function git_config()
+{
+  local mode="$1"    # set | get
+
+  local user_name=""
+  local user_email=""
+  local core_editor=""
+  local push_default=current
+
+  # ask for each variable
+
+}
+
+#        add files in current directory -- or in project root (decide|param)
+function git_add()
+{
+  git add .
+}
+
+#        check status and add not staged files
+function git_status()
+{
+  prnt_summ "calling git status"
+  git status
+
+  # call again and check if there are some unstaged files
+  local unstaged=`git status | grep 'not staged for commit'`
+
+  if [ "$unstaged" != "" ]
+  then
+    cond_eval git_add "there are unstaged files. add them?"
+  fi
+}
+
+
+#        git list
+function git_list()
+{
+  prnt_info "git branch"
+  git branch
+  # git show-ref
+
+}
+
+#        select repo and move there
+function git_select()
+{
+  echo
+}
+
+#        call check remote before each remote action       
+function git_check_remote()
+{
+  echo
+
+}
+
+
+# then
+#
+# develop,commit,merge
+#
+
+
+# git prime time
+# get general info about repos
+#     list current repo/branch
+#     list current git status - files modified, etc
+function prime_time()
+{
+  prnt_summ "prime time"
+
+}
+
+#alias gitignore='git update-index --assume-unchanged *'
+
+# make function as it results in error
+alias gitignore='git rm -r --cached .; git add .'
+alias gitlst='git_list'
+alias gitsts='git_status'
+
+alias gitcfg='git_config'
+alias gitsel='git-select'
+
+# git commit and push
+# git merge to master
+
+alias gitlast='echo print last changes for specified or all projects'
+
+alias gitalias='cat ~/.bashplug/git | grep alias'
