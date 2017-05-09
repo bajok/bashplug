@@ -49,3 +49,17 @@ function cond_eval()
     prnt_info "nothing to do"
   fi
 }
+
+# variable not empty
+function not_empty()
+{
+  prnt_warn "TODO"
+
+  if [ "$1" != "" ]
+  then
+    prnt_info "variable is not empty, so do something"
+  else
+    prnt_info "variable is empty, so do something else"
+  fi
+}
+

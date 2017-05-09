@@ -1,3 +1,4 @@
 .*.swp
 *.swp
+doc/_build/**/*
 

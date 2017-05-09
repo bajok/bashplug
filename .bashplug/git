@@ -77,19 +77,23 @@ function prime_time()
 
 }
 
-#alias gitignore='git update-index --assume-unchanged *'
+#alias gitidx='git update-index --assume-unchanged *'
 
 # make function as it results in error
 alias gitignore='git rm -r --cached .; git add .'
 alias gitlst='git_list'
 alias gitsts='git_status'
-
 alias gitcfg='git_config'
 alias gitsel='git-select'
-
-# git commit and push
-# git merge to master
-
 alias gitlast='echo print last changes for specified or all projects'
 
+# git commit:
+# git commit local
+# git commit and push (get current project e.g. git push bashplug"
+# git merge:
+# git merge to develop (from current branch or just from checked out develop)
+# git merge to master (merge to develop if needed, then switch to master and merge develop)
+
+
+# and print these
 alias gitalias='cat ~/.bashplug/git | grep alias'

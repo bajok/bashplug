@@ -34,6 +34,7 @@ alias mv='mv -i'
 alias rm='rm -i'
 
 # bashplug mgmt
+#alias als='prnt_summ "aliases:"; cat .bashplug/aliases | egrep \'alias[ ]\' | cut -f2'
 alias bs="source ~/.bashplug/source"
 alias bss="~/devel/deploy/bashrc home; bs"
 alias bashrc="vim ~/.bashrc; source ~/.bashrc"
