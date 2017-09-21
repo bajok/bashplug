@@ -1,5 +1,5 @@
 "blue, darkblue, default, delek, desert, elflord, evening, koehler, morning, murphy, pablo, peachpuff, ron, shine, slate, torte, zellner
-colorscheme slate
+colorscheme default
 
 autocmd FileType python colorscheme zellner
 autocmd FileType bash   colorscheme slate

@@ -1,16 +1,21 @@
+#! /bin/bash
 #.bashplug/aliases
+
 
 # change directory aliases
 alias back='cd $OLDPWD'
 alias cd..='cd ..'
 alias ..='cd ..'
 alias cdbp='cd ~/.bashplug'
+alias cddd='cd ~/devel/deploy'
 
 # listing aliases
 alias lsa='ls -a --color=always --group-directories-first'
 alias lsl='ls -la --color=always --group-directories-first --block-size=1'
 alias lss='ls -1Ssa --color=always --group-directories-first'
 alias ls='ls -hF --color=always'
+alias ps='ps -ef'
+alias psproc='ps_list_by proc'
 
 # command aliases
 alias grep='grep --color=auto'
@@ -39,9 +44,16 @@ alias bs="source ~/.bashplug/source"
 alias bss="~/devel/deploy/bashrc home; bs"
 alias bashrc="vim ~/.bashrc; source ~/.bashrc"
 alias vimrc="vim ~/.vimrc"
+# alias catvim="cat $1 | vim -"
 alias xvi="cat $* | hexdump"
 
 # networking
 alias openports='netstat --all --numeric --programs --inet'
+alias nmap-local='nmap 192.168.25.0/24'
 
+# devices
+alias dumpdisk='dump_disk $1 $2 $3'
+
+#alias mimg='mount_image_as_device'
+#aliasumimg
 

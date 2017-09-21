@@ -1,0 +1,47 @@
+#.bashplug/stats
+
+function general_stats()
+{
+  local do_system="yes"
+  local do_login="no"
+  local do_uptime="yes"
+
+  # ---------------------------------------------------------------------------
+  if [ "$do_system" == "yes" ]
+  then
+    prnt_head "machine"
+    prnt_gray; 
+    df -h | egrep 'Filesystem|/dev/'
+    local entrophy=`cat /proc/sys/kernel/random/entropy_avail`
+    prnt_info "current entrophy       :    $entrophy"
+    #| egrep '[[:digit:]]+[A-Z]+'  --color=always # | sort
+  fi
+
+  # ---------------------------------------------------------------------------
+  if [ "$do_login" == "yes" ]
+  then
+    prnt_head "login data"
+    prnt_gray
+    eval last --dns --since -20days
+  fi
+
+  # ---------------------------------------------------------------------------
+  if [ "$do_uptime" == "yes" ]
+  then
+    prnt_head "uptime"
+    prnt_gray; uptime
+  fi
+
+  # ---------------------------------------------------------------------------
+  prnt_gray "process list:"
+  prnt_info "disabled -- use ps filters"
+  # ps -ef | egrep -o '(UID.*PID.*))|(.*(chrom|firefox)[a-zA-z]*[ ])'
+
+}
+
+general_stats
+
+# żeby dać się szantażować eurokratom w sprawie polepszania warunków życia
+# trzeba najpierw zgodzić się co do tego, że jest się gorszym i ma się gorsze warunki do życia
+#
+
