@@ -10,6 +10,9 @@ set modeline                           " allow vim: tabstop=n to be used
 
 set number
 set hlsearch
+hi Search ctermbg=LightYellow
+hi Search ctermfg=Red
+
 set mouse=a
 
 set ai                                 " autoindent
