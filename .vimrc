@@ -3,6 +3,7 @@ colorscheme slate
 
 autocmd FileType python colorscheme zellner
 autocmd FileType bash   colorscheme slate
+set directory=$HOME/.vim/swapfiles/
 
 syntax on
 filetype indent plugin on
@@ -10,6 +11,7 @@ set modeline                           " allow vim: tabstop=n to be used
 
 set number
 set hlsearch
+set showmatch
 hi Search ctermbg=LightYellow
 hi Search ctermfg=Red
 
@@ -58,3 +60,13 @@ nmap <C-c> :q!<cr>
 :set dictionary+=%
 :set iskeyword+=:
 :set complete+=k
+
+" set terminal title
+let &titlestring = "" . expand("%:t") . " (vim)"
+if &term == "screen"
+  set t_ts=^[k
+  set t_fs=^[\
+endif
+if &term == "screen" || &term == "xterm" || &term == "xterm-256color"
+  set title
+endif
