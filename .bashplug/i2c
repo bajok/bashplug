@@ -1,0 +1,16 @@
+#.bashplug/functions
+# vim: filetype=sh
+
+
+pacman -S i2c-tools
+
+sudo modprobe i2c-dev
+sudo modprobe i2c-bcm2708 # find module for this led
+
+
+i2cdetect a
+
+i2cdetect -y 0
+
+Error: Could not open file `/dev/i2c-0' or `/dev/i2c/0': No such file or directory. 
+

@@ -1,0 +1,12 @@
+#! /bin/bash
+
+target=$1
+build_dir=~/aur
+
+if [ "$pwd" != "$build_dir" ]; then
+  echo "running this script in $build_dir"
+  cd $build_dir
+fi
+
+yay -G $target
+

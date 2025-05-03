@@ -1,0 +1,58 @@
+#.bashplug/functions
+# vim: filetype=sh
+
+function log_exec()
+{
+  local cmd="$@"
+  set -x && $cmd ; { set +x; } 2>/dev/null
+}
+
+function tar_compress()
+{
+  local target="$(basename $1)"
+  if [ -e "$target" ]
+  then
+    set -x
+    tar -zcf "$target.tar.gz" "$target"
+    { set +x; } 2>/dev/null
+  else
+    prnt_err "target $target does not exist"
+  fi
+}
+
+function tar_decompress()
+{
+  local target="$(basename $1)"
+  if [ -e "$target" ]
+  then
+    set -x
+    tar -zxf "$target"
+    { set +x; } 2>/dev/null
+  else
+    prnt_err "target $target does not exist"
+  fi
+}
+
+function tar_list()
+{
+  local target="$(basename $1)"
+  if [ -e "$target" ]
+  then
+    set -x
+    tar -ztvf "$target"
+    { set +x; } 2>/dev/null
+  else
+    prnt_err "target $target does not exist"
+  fi
+}
+
+function command_exists()
+{
+  if ! command -v $1 2>&1 >/dev/null
+  then
+    # echo "$1 could not be found"
+    return 1
+  else
+    return 0
+  fi
+}

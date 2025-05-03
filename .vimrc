@@ -1,24 +1,29 @@
 "blue, darkblue, default, delek, desert, elflord, evening, koehler, morning, murphy, pablo, peachpuff, ron, shine, slate, torte, zellner
-colorscheme slate
+colorscheme torte
+"colorscheme default
 
 autocmd FileType python colorscheme zellner
 autocmd FileType bash   colorscheme slate
-set directory=$HOME/.vim/swapfiles/
+
+set backupdir=~/.vim/backups
+set directory=~/.vim/backups
+
+"set redrawtime=10000
+"syntax sync fromstart
+set re=0
 
 syntax on
 filetype indent plugin on
 set modeline                           " allow vim: tabstop=n to be used
 
-set number
+"set number
 set hlsearch
 set showmatch
 hi Search ctermbg=LightYellow
 hi Search ctermfg=Red
-
-set mouse=a
+set mouse=
 
 set ai                                 " autoindent
-
 set sts=2
 set sw=2
 
@@ -27,12 +32,8 @@ set ts=2                               " tab spaces
 set tabstop=2                          " set number of spaces inserted
 set shiftwidth=2                       " when tab is pressed
 
-
-" set nocompatible
-
 " http://vim.wikia.com/wiki/Smart_mapping_for_tab_completion
 " author: benoit cerrina
-
 fun! InsertTabWrapper()
   let col = col('.') - 1
   if !col || getline('.')[col - 1] !~ '\k'
@@ -62,7 +63,7 @@ nmap <C-c> :q!<cr>
 :set complete+=k
 
 " set terminal title
-let &titlestring = "" . expand("%:t") . " (vim)"
+let &titlestring = "vim: " . expand("%:t") . ""
 if &term == "screen"
   set t_ts=^[k
   set t_fs=^[\
@@ -70,3 +71,4 @@ endif
 if &term == "screen" || &term == "xterm" || &term == "xterm-256color"
   set title
 endif
+

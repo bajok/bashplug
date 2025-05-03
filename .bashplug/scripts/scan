@@ -1,0 +1,47 @@
+#! /bin/bash
+
+# /etc/sane.d/dll.conf - uncomment xerox_mfp smfp
+# /etc/udev/rules.d/48-smfp_hp.rules
+# ATTRS{idVendor}=="04E8", ATTRS{idProduct}=="3441", ENV{libsane_matched}="yes"
+# udevadm control --reload-rules;udevadm trigger
+
+TO_PDF=false
+TO_PDF=true
+
+TODAY=$(date +%Y%m%d)
+RESOLUTION=600
+FORMAT=png
+#OFILE=$1.$TODAY.$FORMAT
+OFILE=$TODAY-$1
+RESIZE=25%
+QUALITY=25
+
+find_scanner() {
+  sane-find-scanner | grep "found USB scanner" | grep -o "libusb.*"
+}
+
+#DEVICE="smfp:usb;04e8;3441;Z509BFCBA03581N"
+#DEVICE="xerox_mfp:libusb:002:017"
+#DEVICE="xerox_mfp:libusb:001:006"
+#DEVICE="xerox_mfp:"$(find_scanner)
+DEVICE=""
+
+if [ -z $OFILE ]; then echo "provide file name"; exit; fi
+if [ -f "$OFILE" ]; then echo "$OFILE already exists"; exit; fi
+
+OFILE_PNG=$OFILE.$FORMAT
+OFILE_PDF=$OFILE.pdf
+
+echo $DEVICE
+
+scanimage $DEVICE --progress --format=tiff --resolution $RESOLUTION | convert - -resize $RESIZE -quality $QUALITY $OFILE_PNG
+
+# convert to pdf
+
+if [ "$TO_PDF" == "true" ]; then
+  convert $OFILE_PNG $OFILE_PDF
+  rm -f $OFILE_PNG
+else
+  echo convertion to pdf not requested
+fi
+

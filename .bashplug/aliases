@@ -1,16 +1,22 @@
+#! /bin/bash
 #.bashplug/aliases
 
-# change directory aliases
+command_exists grc; if [ $? -eq 0 ]; then grc='grc'; else grc=''; fi
+
+# directory aliases
 alias back='cd $OLDPWD'
 alias cd..='cd ..'
 alias ..='cd ..'
-alias cdbp='cd ~/.bashplug'
 
 # listing aliases
-alias lsa='ls -a --color=always --group-directories-first'
-alias lsl='ls -la --color=always --group-directories-first --block-size=1'
-alias lss='ls -1Ssa --color=always --group-directories-first'
-alias ls='ls -hF --color=always'
+alias lsa='$grc ls -a --color=always --group-directories-first'
+alias lsl='$grc ls -la --color=always --group-directories-first --block-size=1'
+alias lss='$grc ls -1Ssa --color=always --group-directories-first'
+alias ls='$grc ls -hF --color=always'
+alias ps='$grc ps -ef'
+alias df='$grc df -h'
+alias du='du --apparent-size'
+alias du='$grc du -c -h'
 
 # command aliases
 alias grep='grep --color=auto'
@@ -20,13 +26,11 @@ alias more='less'
 alias today="date +%Y%m%d"
 alias todaytime="date +%Y%m%d%H%M%S"
 alias da='date "+%A, %B %d, %Y [%T]"'
-alias df='df -h'
-alias du='du -c -h'
 alias mkdir='mkdir -p -v'
 alias ping='ping -c 5'
 
 # script aliases
-alias fh="~/.bashplug/scripts/findhere.sh"
+alias fh="~/.bashplug/scripts/findhere.sh" # this script has millions years
 
 # safety features
 alias cp='cp -i'
@@ -34,10 +38,15 @@ alias mv='mv -i'
 alias rm='rm -i'
 
 # bashplug mgmt
-alias bp="source ~/.bashplug/source"
+alias bs="source ~/.bashrc"
 alias bashrc="vim ~/.bashrc; source ~/.bashrc"
 alias vimrc="vim ~/.vimrc"
 alias xvi="cat $* | hexdump"
 
 # networking
 alias openports='netstat --all --numeric --programs --inet'
+alias ssh-keygen-new='ssh-keygen -t ed25519 -C $(echo $hostname)"'
+
+# files
+alias eachfile="~/.bashplug/scripts/eachfile.sh"
+

@@ -1,0 +1,19 @@
+#! /bin/bash
+
+set -e
+
+target=$1
+build_dir=~/aur
+
+if [ "$pwd" != "$build_dir" ]; then
+  echo "running this script in $build_dir"
+  cd $build_dir
+fi
+
+yay -G $target
+echo building
+cd $target
+makepkg 
+echo built:
+ls -1 $build_dir/$target/*.zst
+
